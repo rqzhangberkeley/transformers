@@ -70,8 +70,11 @@ class GPT2Config(PretrainedConfig):
             The dropout ratio for the attention.
         layer_norm_epsilon (`float`, *optional*, defaults to 1e-05):
             The epsilon to use in the layer normalization layers.
+
+        ###### This is the hyper-paarameters for initialization.
         initializer_range (`float`, *optional*, defaults to 0.02):
-            The standard deviation of the truncated_normal_initializer for initializing all weight matrices.
+            The standard deviation of the 'truncated_normal_initializer' for initializing all weight matrices.
+            
         summary_type (`string`, *optional*, defaults to `"cls_index"`):
             Argument used when doing sequence summary, used in the models [`GPT2DoubleHeadsModel`] and
             [`TFGPT2DoubleHeadsModel`].
@@ -105,8 +108,11 @@ class GPT2Config(PretrainedConfig):
             The dropout ratio to be used after the projection and activation.
         scale_attn_weights (`bool`, *optional*, defaults to `True`):
             Scale attention weights by dividing by sqrt(hidden_size)..
+
+        # this is set to False in the ICL codes -rz.
         use_cache (`bool`, *optional*, defaults to `True`):
             Whether or not the model should return the last key/values attentions (not used by all models).
+        
         bos_token_id (`int`, *optional*, defaults to 50256):
             Id of the beginning of sentence token in the vocabulary.
         eos_token_id (`int`, *optional*, defaults to 50256):
@@ -154,14 +160,14 @@ class GPT2Config(PretrainedConfig):
         embd_pdrop=0.1,
         attn_pdrop=0.1,
         layer_norm_epsilon=1e-5,
-        initializer_range=0.02,
+        initializer_range=0.02, # std for the initialization.
         summary_type="cls_index",
         summary_use_proj=True,
         summary_activation=None,
         summary_proj_to_labels=True,
         summary_first_dropout=0.1,
         scale_attn_weights=True,
-        use_cache=True,
+        use_cache=True, # This is set to False in the ICl code. -rqz.
         bos_token_id=50256,
         eos_token_id=50256,
         scale_attn_by_inverse_layer_idx=False,
